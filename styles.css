@@ -1,0 +1,1968 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a2e35 0%, #2d5a6c 100%);
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Logo de Scar Boutique */
+.brand-logo-main {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-image {
+    max-width: 150px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+}
+
+/* Botón para ver oferta */
+.view-offer-btn {
+    background: linear-gradient(45deg, #C62828, #EF5350);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(198, 40, 40, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.view-offer-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(198, 40, 40, 0.6);
+}
+
+.view-offer-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Pantalla de bienvenida */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a2e35 0%, #2d5a6c 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    font-family: 'Arial', sans-serif;
+}
+
+.welcome-content {
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
+}
+
+.welcome-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 3px solid #4CAF50;
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(76, 175, 80, 0.1) 10px,
+            rgba(76, 175, 80, 0.1) 20px
+        );
+    z-index: -1;
+    animation: borderMove 10s linear infinite;
+}
+
+.welcome-header {
+    margin-bottom: 30px;
+}
+
+.welcome-header h2 {
+    font-size: 2.5rem;
+    color: #C62828;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-header p {
+    font-size: 1.2rem;
+    color: #2E7D32;
+    font-weight: bold;
+}
+
+.name-input-container {
+    margin: 30px 0;
+}
+
+.name-input-container label {
+    display: block;
+    margin-bottom: 15px;
+    color: #2E7D32;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#userName {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#userName:focus {
+    outline: none;
+    border-color: #C62828;
+    box-shadow: 0 0 15px rgba(198, 40, 40, 0.3);
+    transform: scale(1.05);
+}
+
+#userName::placeholder {
+    color: #81C784;
+}
+
+.start-btn {
+    background: linear-gradient(45deg, #C62828, #EF5350);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(198, 40, 40, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(198, 40, 40, 0.6);
+}
+
+.start-btn:active {
+    transform: translateY(-1px);
+}
+
+.welcome-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.welcome-footer p {
+    color: #2E7D32;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Visualizador de música */
+.music-visualizer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.music-visualizer:hover {
+    opacity: 1;
+}
+
+.wave-menu {
+    border: 3px solid #4CAF50;
+    border-radius: 50px;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: ease 0.2s;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.wave-menu li {
+    list-style: none;
+    height: 20px;
+    width: 3px;
+    border-radius: 8px;
+    background: #4CAF50;
+    margin: 0 4px;
+    padding: 0;
+    animation-name: wave1;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transition: ease 0.2s;
+}
+
+.wave-menu:hover > li {
+    background: #81C784;
+}
+
+.wave-menu:hover {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #81C784;
+}
+
+.wave-menu li:nth-child(2) {
+    animation-name: wave2;
+    animation-delay: 0.2s;
+}
+
+.wave-menu li:nth-child(3) {
+    animation-name: wave3;
+    animation-delay: 0.23s;
+    animation-duration: 0.4s;
+}
+
+.wave-menu li:nth-child(4) {
+    animation-name: wave4;
+    animation-delay: 0.1s;
+    animation-duration: 0.3s;
+}
+
+.wave-menu li:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.wave-menu li:nth-child(6) {
+    animation-name: wave2;
+    animation-duration: 0.5s;
+}
+
+.wave-menu li:nth-child(8) {
+    animation-name: wave4;
+    animation-delay: 0.4s;
+    animation-duration: 0.25s;
+}
+
+.wave-menu li:nth-child(9) {
+    animation-name: wave3;
+    animation-delay: 0.15s;
+}
+
+@keyframes wave1 {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0.5);
+    }
+}
+
+@keyframes wave2 {
+    from {
+        transform: scaleY(0.3);
+    }
+    to {
+        transform: scaleY(0.6);
+    }
+}
+
+@keyframes wave3 {
+    from {
+        transform: scaleY(0.6);
+    }
+    to {
+        transform: scaleY(0.8);
+    }
+}
+
+@keyframes wave4 {
+    from {
+        transform: scaleY(0.2);
+    }
+    to {
+        transform: scaleY(0.5);
+    }
+}
+
+/* Video de introducción */
+.intro-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background: #000;
+    display: none;
+}
+
+.intro-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.video-overlay .logo-container {
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.personalized-greeting {
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.personalized-greeting h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #81C784;
+}
+
+.personalized-greeting p {
+    font-size: 1.2rem;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* CORTINAS MEJORADAS - SOLO SE MUESTRAN AL FINAL DEL VIDEO */
+.curtains {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    display: none; /* Ocultas inicialmente */
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    transition: transform 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: 
+        linear-gradient(135deg, 
+            #8B0000 0%, 
+            #B22222 20%, 
+            #8B0000 40%, 
+            #DC143C 60%, 
+            #8B0000 80%, 
+            #B22222 100%);
+    box-shadow: 
+        inset 0 0 80px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(139, 0, 0, 0.9);
+    position: relative;
+    overflow: hidden;
+}
+
+.curtain-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 15px,
+            rgba(255, 215, 0, 0.1) 15px,
+            rgba(255, 215, 0, 0.1) 30px
+        ),
+        radial-gradient(
+            circle at 30% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+        );
+}
+
+.curtain-fringe {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: 
+        linear-gradient(45deg, 
+            #FFD700 0%, 
+            #FFA500 25%, 
+            #FFD700 50%, 
+            #FFA500 75%, 
+            #FFD700 100%);
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        95% 20%,
+        90% 0%,
+        85% 20%,
+        80% 0%,
+        75% 20%,
+        70% 0%,
+        65% 20%,
+        60% 0%,
+        55% 20%,
+        50% 0%,
+        45% 20%,
+        40% 0%,
+        35% 20%,
+        30% 0%,
+        25% 20%,
+        20% 0%,
+        15% 20%,
+        10% 0%,
+        5% 20%,
+        0% 0%
+    );
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.curtain-tassel {
+    position: absolute;
+    bottom: 80px;
+    width: 25px;
+    height: 120px;
+    background: 
+        linear-gradient(45deg, 
+            #FFD700 0%, 
+            #FFA500 50%, 
+            #FFD700 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.left-curtain .curtain-tassel {
+    right: 20px;
+}
+
+.right-curtain .curtain-tassel {
+    left: 20px;
+}
+
+.curtain-rod {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: 
+        linear-gradient(135deg, 
+            #8B4513 0%, 
+            #A0522D 50%, 
+            #8B4513 100%);
+    box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.7),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    z-index: 2;
+}
+
+.left-curtain {
+    left: 0;
+    transform: translateX(0);
+}
+
+.right-curtain {
+    right: 0;
+    transform: translateX(0);
+}
+
+.curtains.open .left-curtain {
+    transform: translateX(-100%);
+}
+
+.curtains.open .right-curtain {
+    transform: translateX(100%);
+}
+
+/* Video de Santa Claus */
+.santa-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 400px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid #4CAF50;
+}
+
+.santa-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.santa-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.santa-video-overlay h3 {
+    font-size: 2.5rem;
+    text-align: center;
+    background: rgba(198, 40, 40, 0.8);
+    padding: 15px 30px;
+    border-radius: 25px;
+    border: 2px solid #FFD700;
+}
+
+/* Copos de nieve */
+.snowflakes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 1.5rem;
+    animation: fall linear infinite;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.snowflake:nth-child(1) {
+    left: 10%;
+    animation-duration: 10s;
+    animation-delay: 0s;
+}
+
+.snowflake:nth-child(2) {
+    left: 20%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.snowflake:nth-child(3) {
+    left: 30%;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+.snowflake:nth-child(4) {
+    left: 40%;
+    animation-duration: 14s;
+    animation-delay: 0.5s;
+}
+
+.snowflake:nth-child(5) {
+    left: 50%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+
+.snowflake:nth-child(6) {
+    left: 60%;
+    animation-duration: 9s;
+    animation-delay: 1.5s;
+}
+
+.snowflake:nth-child(7) {
+    left: 70%;
+    animation-duration: 13s;
+    animation-delay: 2.5s;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Contenido principal */
+.main-content {
+    opacity: 0;
+    transition: opacity 1s ease;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: none; /* Oculto inicialmente */
+}
+
+.main-content.visible {
+    opacity: 1;
+    display: block;
+}
+
+/* Encabezado navideño */
+.header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        #4CAF50, #81C784, #A5D6A7, 
+        #81C784, #4CAF50);
+    background-size: 800% 800%;
+    animation: rainbow 3s ease infinite;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(76, 175, 80, 0.7);
+    color: #fff;
+    background: linear-gradient(45deg, #4CAF50, #81C784, #A5D6A7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.slogan {
+    font-size: 1.2rem;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: #81C784;
+    text-shadow: 0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+/* Marca de agua */
+.brand-watermark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.3;
+    font-size: 0.8rem;
+    color: #81C784;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Esquina de marca */
+.brand-corner {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* Estrellas fugaces */
+.shooting-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.shooting-star {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, #81C784, transparent);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.shooting-star:nth-child(1) {
+    width: 120px;
+    height: 2px;
+    top: 20%;
+    animation: shootingStar 8s linear infinite;
+}
+
+.shooting-star:nth-child(2) {
+    width: 80px;
+    height: 1px;
+    top: 40%;
+    animation: shootingStar 12s linear infinite 4s;
+}
+
+.shooting-star:nth-child(3) {
+    width: 100px;
+    height: 1.5px;
+    top: 60%;
+    animation: shootingStar 10s linear infinite 7s;
+}
+
+@keyframes shootingStar {
+    0% {
+        left: -100px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Estrellas decorativas mejoradas */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    background: #81C784;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+    box-shadow: 0 0 10px rgba(129, 199, 132, 0.8);
+}
+
+.star-1 {
+    width: 4px;
+    height: 4px;
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.star-2 {
+    width: 3px;
+    height: 3px;
+    top: 30%;
+    left: 70%;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    width: 5px;
+    height: 5px;
+    top: 60%;
+    left: 40%;
+    animation-delay: 1s;
+}
+
+.star-4 {
+    width: 4px;
+    height: 4px;
+    top: 80%;
+    left: 80%;
+    animation-delay: 1.5s;
+}
+
+.star-5 {
+    width: 3px;
+    height: 3px;
+    top: 40%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+        transform: scale(0.8);
+        box-shadow: 0 0 5px rgba(129, 199, 132, 0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 15px rgba(129, 199, 132, 1);
+    }
+}
+
+/* Carta navideña mejorada */
+.christmas-card {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    perspective: 1000px;
+    position: relative;
+    z-index: 10;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    transition: transform 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-style: preserve-3d;
+}
+
+.christmas-card.open .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        inset 0 0 50px rgba(255, 255, 255, 0.1);
+    border: 3px solid #4CAF50;
+}
+
+.card-front {
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(198, 40, 40, 0.7) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(129, 199, 132, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-front::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(360deg); }
+}
+
+.card-back {
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(129, 199, 132, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.brand-logo-small {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 0.8rem;
+    color: #81C784;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card-decoration {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ornament {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+}
+
+.ornament-1 {
+    background: radial-gradient(circle at 30% 30%, #4CAF50, #2E7D32);
+    animation-delay: 0s;
+}
+
+.ornament-2 {
+    background: radial-gradient(circle at 30% 30%, #C62828, #B71C1C);
+    animation-delay: 1s;
+}
+
+.ornament-3 {
+    background: radial-gradient(circle at 30% 30%, #81C784, #4CAF50);
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.card-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(76, 175, 80, 0.7);
+    color: #81C784;
+}
+
+.card-content p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.open-card-btn {
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(76, 175, 80, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.open-card-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(76, 175, 80, 0.7);
+}
+
+.open-card-btn:active {
+    transform: translateY(-1px);
+}
+
+.signature {
+    margin-top: 30px;
+    font-style: italic;
+}
+
+.brand-name {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 5px;
+    color: #81C784;
+    text-shadow: 0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+/* Personalización de nombres */
+.personalized-name {
+    color: #C62828;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    animation: namePulse 2s infinite;
+}
+
+@keyframes namePulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Oferta especial navideña */
+.special-offer {
+    background: 
+        linear-gradient(135deg, 
+            rgba(46, 125, 50, 0.3) 0%, 
+            rgba(129, 199, 132, 0.2) 50%, 
+            rgba(27, 94, 32, 0.3) 100%);
+    padding: 40px 20px;
+    margin: 40px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #4CAF50;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 50px rgba(76, 175, 80, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.special-offer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(76, 175, 80, 0.1) 10px,
+            rgba(76, 175, 80, 0.1) 20px
+        );
+    z-index: -1;
+    animation: borderMove 10s linear infinite;
+}
+
+@keyframes borderMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-20px) translateY(-20px); }
+}
+
+.offer-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #81C784;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+.offer-content > p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Cupón de descuento navideño */
+.discount-coupon {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 3px solid #4CAF50;
+    margin: 30px auto;
+    max-width: 600px;
+    background: 
+        linear-gradient(135deg, 
+            rgba(46, 125, 50, 0.8) 0%, 
+            rgba(129, 199, 132, 0.6) 50%, 
+            rgba(27, 94, 32, 0.8) 100%);
+    overflow: hidden;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(76, 175, 80, 0.5);
+    transition: all 0.3s ease;
+}
+
+.discount-coupon:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(76, 175, 80, 0.7);
+}
+
+.discount-coupon:hover .coupon-content h3 > span {
+    animation: jump 0.15s ease-out 1 normal both;
+}
+
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(1) { animation-delay: 0.03s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(2) { animation-delay: 0.06s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(3) { animation-delay: 0.09s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(4) { animation-delay: 0.12s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(5) { animation-delay: 0.15s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(6) { animation-delay: 0.18s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(7) { animation-delay: 0.21s; }
+.discount-coupon:hover .coupon-content h3 > span:nth-of-type(8) { animation-delay: 0.24s; }
+
+.coupon-box {
+    height: 100%;
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 1rem;
+    background: 
+        linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.coupon-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: shine 2s linear infinite;
+}
+
+.coupon-box span {
+    display: block;
+    font-weight: bold;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.coupon-divider {
+    display: block;
+    width: 0px;
+    height: 120px;
+    border: 3px dashed transparent;
+    border-right-color: #4CAF50;
+}
+
+.coupon-content {
+    padding: 1rem;
+    flex: 1;
+    color: #fff;
+    width: 330px;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.coupon-content h3 {
+    font-weight: 600;
+    font-size: 2.2rem;
+    height: 34px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    color: #81C784;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.coupon-content h3 span.end {
+    width: 30px;
+}
+
+.coupon-content p {
+    font-weight: 400;
+    font-style: normal;
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.coupon-link {
+    font-style: italic;
+    color: #81C784;
+    text-transform: capitalize;
+    word-spacing: 0.03rem;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-underline-offset: 0.05rem;
+    text-decoration-color: #81C784;
+    transition: all 0.3s ease;
+}
+
+.coupon-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+        scale: 1;
+    }
+    50% {
+        transform: translateY(-10px);
+        scale: 1.1;
+    }
+    100% {
+        transform: translateY(0);
+        scale: 1;
+    }
+}
+
+/* Contador regresivo navideño */
+.countdown-timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.timer-item {
+    text-align: center;
+}
+
+.time-box {
+    width: 80px;
+    height: 80px;
+    background: 
+        linear-gradient(135deg, 
+            rgba(46, 125, 50, 0.8) 0%, 
+            rgba(129, 199, 132, 0.6) 100%);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    border: 2px solid #4CAF50;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.time-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite;
+}
+
+.timer-separator {
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+}
+
+.timer-item p {
+    font-size: 1rem;
+    color: #81C784;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.offer-note {
+    font-style: italic;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #81C784;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Sección de contacto */
+.contact-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #81C784;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item i {
+    font-size: 2.5rem;
+    color: #81C784;
+    margin-bottom: 15px;
+}
+
+.contact-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #81C784;
+}
+
+.contact-item p {
+    color: #e0e0e0;
+}
+
+.brand-footer {
+    background: rgba(76, 175, 80, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.brand-footer h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #81C784;
+    text-shadow: 0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+.brand-footer p {
+    font-style: italic;
+    color: #e0e0e0;
+}
+
+/* Botones de redes sociales */
+.social-buttons {
+    text-align: center;
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(76, 175, 80, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(76, 175, 80, 0.7);
+}
+
+.instagram-link {
+    background: 
+        linear-gradient(45deg, 
+            #405DE6, #5851DB, #833AB4, 
+            #C13584, #E1306C, #FD1D1D);
+}
+
+.tiktok-link {
+    background: 
+        linear-gradient(45deg, 
+            #000000, #25F4EE, #FE2C55, #000000);
+}
+
+/* ESTILOS ESPECÍFICOS PARA PRODUCTOS */
+.products-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.products-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #81C784;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(129, 199, 132, 0.7);
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid #4CAF50;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.container-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-circle {
+    width: 150px;
+    height: 150px;
+    fill: #4CAF50;
+    opacity: 0.3;
+}
+
+.fil-shoes1, .fil-shoes2 {
+    fill: #4CAF50;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail {
+    text-align: center;
+}
+
+.detail span {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2E7D32;
+    margin-bottom: 10px;
+}
+
+.detail p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #C62828;
+    margin-bottom: 15px;
+}
+
+.detail button {
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.detail button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+.product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-image {
+    width: 120px;
+    height: 120px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #4CAF50;
+}
+
+.img-product {
+    width: 80px;
+    height: 80px;
+    fill: #4CAF50;
+    opacity: 0.7;
+}
+
+/* Información de contacto en productos */
+.contact-info-products {
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-details .contact-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.contact-details .contact-item i {
+    font-size: 2rem;
+    color: #81C784;
+    margin-bottom: 15px;
+}
+
+.contact-details .contact-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #81C784;
+}
+
+.contact-details .contact-item p {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+/* Botón para volver */
+.back-button-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.2rem;
+    }
+    
+    .discount-coupon {
+        flex-direction: column;
+        max-width: 300px;
+    }
+    
+    .coupon-divider {
+        width: 100%;
+        height: 0;
+        border: 3px dashed #4CAF50;
+        border-bottom-color: transparent;
+    }
+    
+    .coupon-content {
+        width: 100%;
+    }
+    
+    .countdown-timer {
+        gap: 0.8rem;
+    }
+    
+    .time-box {
+        width: 65px;
+        height: 65px;
+        font-size: 1.7rem;
+    }
+    
+    .wave-menu {
+        width: 120px;
+        height: 35px;
+    }
+    
+    .wave-menu li {
+        height: 18px;
+        width: 2px;
+        margin: 0 3px;
+    }
+    
+    .music-visualizer {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .welcome-card {
+        padding: 30px 20px;
+    }
+    
+    .welcome-header h2 {
+        font-size: 2rem;
+    }
+    
+    .welcome-header p {
+        font-size: 1rem;
+    }
+    
+    .start-btn {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+    }
+    
+    #userName {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+    
+    .santa-video-overlay h3 {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+    }
+    
+    .santa-video-container {
+        height: 300px;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-link {
+        width: 250px;
+        justify-content: center;
+    }
+    
+    .logo-image {
+        max-width: 120px;
+    }
+    
+    .products-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .contact-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .slogan {
+        font-size: 1rem;
+    }
+    
+    .card-content h2 {
+        font-size: 2rem;
+    }
+    
+    .offer-content h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-content h2 {
+        font-size: 2rem;
+    }
+    
+    .time-box {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+    
+    .timer-separator {
+        font-size: 2rem;
+    }
+    
+    .welcome-content {
+        width: 95%;
+    }
+    
+    .welcome-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .personalized-greeting h2 {
+        font-size: 2rem;
+    }
+    
+    .santa-video-container {
+        height: 200px;
+    }
+    
+    .santa-video-overlay h3 {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+    }
+    
+    .logo-image {
+        max-width: 100px;
+    }
+    
+    .view-offer-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .products-section h2 {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .detail span {
+        font-size: 1.1rem;
+    }
+    
+    .detail p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Estilos para imágenes reales de productos */
+.product-image-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 3px solid #4CAF50;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.product-real-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-real-image:hover {
+    transform: scale(1.1);
+}
+
+.img-product-real {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Mensaje para activar música */
+.music-play-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 10000;
+    border: 2px solid #4CAF50;
+    backdrop-filter: blur(10px);
+    animation: pulse 2s infinite;
+}
+
+.play-message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.play-message-content i {
+    font-size: 2rem;
+    color: #81C784;
+}
+
+.play-message-content p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Visualizador de música en productos */
+.music-visualizer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.music-visualizer:hover {
+    opacity: 1;
+}

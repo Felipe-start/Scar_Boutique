@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Navideña - Scar Boutique</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Audio para campanitas y música navideña -->
+    <audio id="bellsSound" preload="auto">
+        <source src="cascabeles.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="christmasMusic" preload="auto" loop>
+        <source src="musica-navidad.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <!-- Pantalla de bienvenida -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="snowflakes" aria-hidden="true">
+                <div class="snowflake">❅</div>
+                <div class="snowflake">❅</div>
+                <div class="snowflake">❆</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❅</div>
+                <div class="snowflake">❆</div>
+                <div class="snowflake">❄</div>
+            </div>
+            
+            <div class="logo-container">
+                <!-- Logo de Scar Boutique -->
+                <div class="brand-logo-main">
+                    <img src="logo-scar-boutique.jpg" alt="Scar Boutique" class="logo-image">
+                </div>
+                <h1 class="logo">SCAR BOUTIQUE</h1>
+                <p class="slogan">MY STYLE</p>
+            </div>
+            
+            <div class="welcome-card">
+                <div class="welcome-header">
+                    <h2>¡Feliz Navidad!</h2>
+                    <p>Te desea Scar Boutique</p>
+                </div>
+                
+                <div class="name-input-container">
+                    <label for="userName">Para personalizar tu carta navideña:</label>
+                    <input type="text" id="userName" placeholder="Escribe tu nombre aquí" maxlength="30">
+                    <button id="startExperience" class="start-btn">
+                        <i class="fas fa-gift"></i>
+                        Descubre Tu Sorpresa
+                    </button>
+                </div>
+                
+                <div class="welcome-footer">
+                    <p>Una experiencia mágica te espera</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video de introducción (14 segundos) -->
+    <div id="introVideo" class="intro-video" style="display: none;">
+        <video id="videoPlayer" muted autoplay playsinline>
+            <source src="video-navidad.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <div class="video-overlay">
+            <div class="logo-container">
+                <h1 class="logo">SCAR BOUTIQUE</h1>
+                <p class="slogan">MY STYLE</p>
+            </div>
+            <div class="personalized-greeting">
+                <h2 id="greetingName">¡Hola!</h2>
+                <p>Preparando tu experiencia navideña...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualizador de música (oculto inicialmente) -->
+    <div class="music-visualizer" style="display: none;">
+        <ul class="wave-menu">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!-- Cortinas de apertura MEJORADAS -->
+    <div id="curtains" class="curtains">
+        <div class="curtain left-curtain">
+            <div class="curtain-texture"></div>
+            <div class="curtain-fringe"></div>
+            <div class="curtain-tassel"></div>
+        </div>
+        <div class="curtain right-curtain">
+            <div class="curtain-texture"></div>
+            <div class="curtain-fringe"></div>
+            <div class="curtain-tassel"></div>
+        </div>
+        <div class="curtain-rod"></div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="mainContent" class="main-content">
+        <!-- Encabezado con logo -->
+        <header class="header">
+            <div class="logo-container">
+                <!-- Logo de Scar Boutique -->
+                <div class="brand-logo-main">
+                    <img src="logo-scar-boutique.jpg" alt="Scar Boutique" class="logo-image">
+                </div>
+                <h1 class="logo">SCAR BOUTIQUE</h1>
+                <p class="slogan">MY STYLE</p>
+            </div>
+            <div class="brand-watermark">
+                <span>SCAR BOUTIQUE</span>
+            </div>
+        </header>
+
+        <!-- Video de Santa Claus (reemplaza la animación) -->
+        <div class="santa-video-container">
+            <video id="santaVideo" autoplay muted loop playsinline>
+                <source src="0_Christmas_Santa_Claus_1920x1080.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="santa-video-overlay">
+                <h3>¡La Magia de la Navidad ha Llegado!</h3>
+            </div>
+        </div>
+
+        <!-- Estrellas fugaces -->
+        <div class="shooting-stars">
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+        </div>
+
+        <!-- Estrellas decorativas -->
+        <div class="stars-container">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+        </div>
+
+        <!-- Carta navideña -->
+        <section id="christmasCard" class="christmas-card">
+            <div class="brand-corner">
+                <span>SCAR BOUTIQUE</span>
+            </div>
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="card-content">
+                        <div class="card-decoration">
+                            <div class="ornament ornament-1"></div>
+                            <div class="ornament ornament-2"></div>
+                            <div class="ornament ornament-3"></div>
+                        </div>
+                        <h2>¡Feliz Navidad!</h2>
+                        <p>De parte de todo el equipo de Scar Boutique</p>
+                        <button id="openCardBtn" class="open-card-btn">Abrir Carta</button>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div class="card-content">
+                        <div class="brand-logo-small">
+                            <span>SCAR BOUTIQUE</span>
+                        </div>
+                        <h2>Para <span id="personalizedName" class="personalized-name">Querida Cliente</span></h2>
+                        <p>En esta Navidad, queremos agradecerte especialmente a ti por ser parte de nuestra familia Scar Boutique.</p>
+                        <p>Que estas fiestas estén llenas de amor, alegría y por supuesto, ¡estilo único!</p>
+                        <p>Que la magia de la Navidad ilumine tu corazón y que el nuevo año te traiga éxito, salud y momentos inolvidables.</p>
+                        
+                        <!-- Botón para ver oferta exclusiva -->
+                        <button id="viewOfferBtn" class="view-offer-btn">
+                            <i class="fas fa-gift"></i>
+                            Ver Oferta Exclusiva
+                        </button>
+                        
+                        <div class="signature">
+                            <p>Con cariño,</p>
+                            <p class="brand-name">Scar Boutique</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de oferta especial (inicialmente oculta) -->
+        <section id="specialOffer" class="special-offer" style="display: none;">
+            <div class="brand-corner">
+                <span>OFERTA EXCLUSIVA</span>
+            </div>
+            <div class="offer-content">
+                <h2>¡Oferta Especial Para <span id="offerName" class="personalized-name">Ti</span>!</h2>
+                <p>Por ser nuestro cliente especial, tienes un</p>
+                
+                <!-- Cupón de descuento -->
+                <div class="discount-coupon">
+                    <div class="coupon-box">
+                        <span>10%</span>
+                        <span>OFF</span>
+                    </div>
+                    <div class="coupon-divider"></div>
+                    <div class="coupon-content">
+                        <h3>
+                            <span>N</span>
+                            <span>A</span>
+                            <span>V</span>
+                            <span>I</span>
+                            <span>D</span>
+                            <span>A</span>
+                            <span>D</span>
+                            <span>🎄</span>
+                        </h3>
+                        <p>
+                            Disfruta de un <strong>10% DE DESCUENTO</strong> en artículos seleccionados de la tienda.
+                            <a href="productos.html" class="coupon-link">Ver productos</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Contador regresivo -->
+                <div class="countdown-timer">
+                    <div class="timer-item">
+                        <div class="time-box">
+                            <span id="days">00</span>
+                        </div>
+                        <p>Días</p>
+                    </div>
+                    <div class="timer-separator">:</div>
+                    <div class="timer-item">
+                        <div class="time-box">
+                            <span id="hours">00</span>
+                        </div>
+                        <p>Horas</p>
+                    </div>
+                    <div class="timer-separator">:</div>
+                    <div class="timer-item">
+                        <div class="time-box">
+                            <span id="minutes">00</span>
+                        </div>
+                        <p>Minutos</p>
+                    </div>
+                    <div class="timer-separator">:</div>
+                    <div class="timer-item">
+                        <div class="time-box">
+                            <span id="seconds">00</span>
+                        </div>
+                        <p>Segundos</p>
+                    </div>
+                </div>
+                
+                <p class="offer-note">Esta oferta es exclusiva para <span id="exclusiveName" class="personalized-name">nuestros clientes especiales</span>.</p>
+            </div>
+        </section>
+
+        <!-- Sección de contacto -->
+        <section id="contact" class="contact-section">
+            <div class="contact-content">
+                <h2>¡Encuentra Tu Estilo <span id="contactName" class="personalized-name">!</span></h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-store"></i>
+                        <h3>Visita Nuestra Tienda</h3>
+                        <p>Descubre la magia de Scar Boutique en persona</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-gift"></i>
+                        <h3>Regalos Especiales</h3>
+                        <p>Envoltura gratuita para tus regalos navideños</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Envíos Nacionales</h3>
+                        <p>¡Ahora contamos con envíos a todo el país!</p>
+                    </div>
+                </div>
+                <div class="brand-footer">
+                    <h3>SCAR BOUTIQUE</h3>
+                    <p>Donde tu estilo encuentra su magia</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botones de redes sociales -->
+        <div class="social-buttons">
+            <a href="https://www.instagram.com/scar___boutique?igsh=MWIzMzk2NTVuN3c0cA==" target="_blank" class="social-link instagram-link">
+                <i class="fab fa-instagram"></i>
+                Síguenos en Instagram
+            </a>
+            <a href="https://www.tiktok.com/@scar____boutique?_r=1&_t=ZS-91qHtTPlzl6" target="_blank" class="social-link tiktok-link">
+                <i class="fab fa-tiktok"></i>
+                Síguenos en TikTok
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
