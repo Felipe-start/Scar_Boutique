@@ -45,33 +45,21 @@ function setupMediaErrorHandling() {
     });
 }
 
-// Configurar el video
+// Configurar el video/GIF
 function setupVideo() {
-    const video = document.getElementById('videoPlayer');
-    if (!video) return;
+    const videoPlayer = document.getElementById('videoPlayer');
+    if (!videoPlayer) return;
     
-    video.addEventListener('loadeddata', function() {
-        console.log("Video cargado correctamente");
-    });
+    // Usar un timeout para simular la duración del GIF (14 segundos)
+    const gifDuration = 14000; // 14 segundos en milisegundos
     
-    video.addEventListener('error', function(e) {
-        console.warn("Error cargando el video:", e);
+    setTimeout(() => {
+        console.log("GIF terminado (simulado)");
         videoEnded = true;
         if (userName) {
             startMainExperience();
         }
-    });
-    
-    // Timeout de seguridad
-    setTimeout(() => {
-        if (!videoEnded && video.paused) {
-            console.log("Video no se reproduce, continuando...");
-            videoEnded = true;
-            if (userName) {
-                startMainExperience();
-            }
-        }
-    }, 18000);
+    }, gifDuration);
 }
 
 // Configurar event listeners
@@ -134,49 +122,28 @@ function startExperience() {
         welcomeScreen.style.display = 'none';
     }
     
-    // Mostrar video
+    // Mostrar video/GIF
     const introVideo = document.getElementById('introVideo');
     if (introVideo) {
         introVideo.style.display = 'block';
     }
     
-    // Reproducir video y audio
-    const video = document.getElementById('videoPlayer');
+    // Reproducir audio
     const bells = document.getElementById('bellsSound');
     
-    if (video) {
-        // Intentar reproducir el video
-        const playPromise = video.play();
-        
+    if (bells) {
+        const playPromise = bells.play();
         if (playPromise !== undefined) {
             playPromise.then(() => {
-                console.log("Video reproduciéndose");
-                // Reproducir campanitas después de que el video empiece
-                if (bells) {
-                    bells.play().then(() => {
-                        bellsPlayed = true;
-                        console.log("Campanitas reproduciéndose");
-                    }).catch(e => {
-                        console.warn("No se pudo reproducir campanitas:", e.message);
-                    });
-                }
+                bellsPlayed = true;
+                console.log("Campanitas reproduciéndose");
             }).catch(e => {
-                console.warn("No se pudo reproducir video:", e.message);
-                handleVideoError();
+                console.warn("No se pudo reproducir campanitas:", e.message);
             });
         }
-        
-        // Configurar evento para cuando termine el video
-        video.addEventListener('ended', function() {
-            console.log("Video terminado");
-            videoEnded = true;
-            startMainExperience();
-        }, { once: true });
-    } else {
-        handleVideoError();
     }
     
-    // Timeout de respaldo (18 segundos para video + margen)
+    // Timeout de respaldo (18 segundos para GIF de 14s + margen)
     setTimeout(() => {
         if (!videoEnded) {
             console.log("Timeout alcanzado, continuando...");
