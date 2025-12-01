@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #1a2e35 0%, #2d5a6c 100%);
@@ -12,6 +17,14 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    width: 100%;
+}
+
+/* Asegurar que los videos se adapten */
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Logo de Scar Boutique */
@@ -1710,7 +1723,31 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .santa-video-container {
+        height: 350px;
+    }
+    
+    .santa-video-overlay h3 {
+        font-size: 2rem;
+    }
+    
+    .countdown-timer {
+        gap: 1rem;
+    }
+    
+    .time-box {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+}
+
 @media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
     .logo {
         font-size: 2.2rem;
     }
@@ -1741,6 +1778,10 @@ body {
         font-size: 1.7rem;
     }
     
+    .timer-separator {
+        font-size: 2rem;
+    }
+    
     .wave-menu {
         width: 120px;
         height: 35px;
@@ -1759,6 +1800,7 @@ body {
     
     .welcome-card {
         padding: 30px 20px;
+        margin: 20px;
     }
     
     .welcome-header h2 {
@@ -1772,11 +1814,14 @@ body {
     .start-btn {
         font-size: 1.1rem;
         padding: 12px 25px;
+        width: 100%;
+        max-width: 280px;
     }
     
     #userName {
         font-size: 1rem;
         padding: 12px 15px;
+        max-width: 280px;
     }
     
     .santa-video-overlay h3 {
@@ -1786,15 +1831,19 @@ body {
     
     .santa-video-container {
         height: 300px;
+        margin: 15px auto;
+        max-width: 100%;
     }
     
     .social-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
     
     .social-link {
-        width: 250px;
+        width: 100%;
+        max-width: 280px;
         justify-content: center;
     }
     
@@ -1810,27 +1859,64 @@ body {
     .contact-details {
         grid-template-columns: 1fr;
     }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 1.8rem;
+    
+    .header {
+        padding: 30px 15px 15px;
+        margin-bottom: 20px;
     }
     
-    .slogan {
-        font-size: 1rem;
+    .contact-section {
+        padding: 30px 15px;
+    }
+    
+    .special-offer {
+        padding: 30px 15px;
+        margin: 30px 15px;
+    }
+    
+    .main-content {
+        padding: 0 15px;
+    }
+    
+    .card-inner {
+        height: 350px;
     }
     
     .card-content h2 {
         font-size: 2rem;
     }
     
+    .card-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .slogan {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    
+    .card-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
     .offer-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .contact-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .time-box {
@@ -1840,7 +1926,7 @@ body {
     }
     
     .timer-separator {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     
     .welcome-content {
@@ -1851,16 +1937,21 @@ body {
         font-size: 1.8rem;
     }
     
+    .welcome-header p {
+        font-size: 0.95rem;
+    }
+    
     .personalized-greeting h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .santa-video-container {
         height: 200px;
+        margin: 10px auto;
     }
     
     .santa-video-overlay h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         padding: 8px 15px;
     }
     
@@ -1871,10 +1962,12 @@ body {
     .view-offer-btn {
         padding: 10px 20px;
         font-size: 0.9rem;
+        width: 100%;
+        max-width: 250px;
     }
     
     .products-section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .card {
@@ -1887,6 +1980,44 @@ body {
     
     .detail p {
         font-size: 1.3rem;
+    }
+    
+    .start-btn,
+    #userName {
+        width: 100%;
+        font-size: 1rem;
+    }
+    
+    .coupon-box span {
+        font-size: 1.8rem;
+    }
+    
+    .coupon-content h3 {
+        font-size: 1.8rem;
+        height: 30px;
+    }
+    
+    .open-card-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .card-front, .card-back {
+        padding: 20px;
+    }
+    
+    .snowflake {
+        font-size: 1.2rem;
+    }
+    
+    .header::before {
+        height: 3px;
+    }
+    
+    .brand-watermark {
+        font-size: 0.7rem;
+        top: 10px;
+        right: 10px;
     }
 }
 

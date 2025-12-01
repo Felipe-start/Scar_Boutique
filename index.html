@@ -63,8 +63,9 @@
 
     <!-- Video de introducción (14 segundos) -->
     <div id="introVideo" class="intro-video" style="display: none;">
-        <video id="videoPlayer" muted autoplay playsinline>
+        <video id="videoPlayer" muted autoplay playsinline preload="auto">
             <source src="video-navidad.mp4" type="video/mp4">
+            <source src="video-navidad.webm" type="video/webm">
             Tu navegador no soporta el elemento de video.
         </video>
         <div class="video-overlay">
@@ -129,8 +130,9 @@
 
         <!-- Video de Santa Claus (reemplaza la animación) -->
         <div class="santa-video-container">
-            <video id="santaVideo" autoplay muted loop playsinline>
+            <video id="santaVideo" autoplay muted loop playsinline preload="none">
                 <source src="0_Christmas_Santa_Claus_1920x1080.mp4" type="video/mp4">
+                <source src="0_Christmas_Santa_Claus_1920x1080.webm" type="video/webm">
                 Tu navegador no soporta el elemento de video.
             </video>
             <div class="santa-video-overlay">
