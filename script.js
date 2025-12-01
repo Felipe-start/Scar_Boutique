@@ -3,17 +3,10 @@ let musicPlaying = false;
 let bellsPlayed = false;
 let videoEnded = false;
 let userName = "";
-let isMobile = window.innerWidth <= 768;
-
-// Detectar cambio de tamaño
-window.addEventListener('resize', () => {
-    isMobile = window.innerWidth <= 768;
-});
 
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Scar Boutique - Carta Navideña cargada");
-    console.log("Dispositivo móvil:", isMobile);
     
     // Configurar eventos
     setupEventListeners();
@@ -23,43 +16,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Configurar video para que se reproduzca correctamente
     setupVideo();
-    
-    // Configurar handling de errores de archivos multimedia
-    setupMediaErrorHandling();
 });
 
-// Setup de handling de errores multimedia
-function setupMediaErrorHandling() {
-    const audioElements = document.querySelectorAll('audio, video');
-    audioElements.forEach(element => {
-        element.addEventListener('error', (e) => {
-            console.warn(`Error cargando multimedia:`, element.src || element.children[0]?.src, e.error);
+// Configurar el video
+function setupVideo() {
+    const video = document.getElementById('videoPlayer');
+    if (video) {
+        video.addEventListener('loadeddata', function() {
+            console.log("Video cargado correctamente");
         });
         
-        // Agregar timeouts para archivos que tarden mucho
-        setTimeout(() => {
-            if (element.readyState < 2) {
-                console.warn(`Timeout cargando: ${element.id}`);
+        video.addEventListener('error', function(e) {
+            console.log("Error cargando el video:", e);
+            // Si hay error con el video, continuar sin él
+            videoEnded = true;
+            if (userName) {
+                startMainExperience();
             }
-        }, 5000);
-    });
-}
-
-// Configurar el video/GIF
-function setupVideo() {
-    const videoPlayer = document.getElementById('videoPlayer');
-    if (!videoPlayer) return;
-    
-    // Usar un timeout para simular la duración del GIF (14 segundos)
-    const gifDuration = 14000; // 14 segundos en milisegundos
-    
-    setTimeout(() => {
-        console.log("GIF terminado (simulado)");
-        videoEnded = true;
-        if (userName) {
-            startMainExperience();
-        }
-    }, gifDuration);
+        });
+    }
 }
 
 // Configurar event listeners
@@ -122,34 +97,63 @@ function startExperience() {
         welcomeScreen.style.display = 'none';
     }
     
-    // Mostrar video/GIF
+    // Mostrar video
     const introVideo = document.getElementById('introVideo');
     if (introVideo) {
         introVideo.style.display = 'block';
     }
     
-    // Reproducir audio
+    // Reproducir video y audio
+    const video = document.getElementById('videoPlayer');
     const bells = document.getElementById('bellsSound');
     
-    if (bells) {
-        const playPromise = bells.play();
+    if (video) {
+        // Intentar reproducir el video
+        const playPromise = video.play();
+        
         if (playPromise !== undefined) {
             playPromise.then(() => {
-                bellsPlayed = true;
-                console.log("Campanitas reproduciéndose");
+                console.log("Video reproduciéndose");
+                // Reproducir campanitas después de que el video empiece
+                if (bells) {
+                    bells.play().then(() => {
+                        bellsPlayed = true;
+                        console.log("Campanitas reproduciéndose");
+                    }).catch(e => {
+                        console.log("Error reproduciendo campanitas:", e);
+                    });
+                }
             }).catch(e => {
-                console.warn("No se pudo reproducir campanitas:", e.message);
+                console.log("Error reproduciendo video:", e);
+                // Si el video no se puede reproducir, continuar sin él
+                handleVideoError();
             });
         }
+        
+        // Configurar evento para cuando termine el video
+        video.addEventListener('ended', function() {
+            console.log("Video terminado");
+            videoEnded = true;
+            startMainExperience();
+        });
+        
+        // Configurar evento de error del video
+        video.addEventListener('error', function(e) {
+            console.log("Error en el video:", e);
+            handleVideoError();
+        });
+    } else {
+        // Si no hay video, continuar directamente
+        handleVideoError();
     }
     
-    // Timeout de respaldo (18 segundos para GIF de 14s + margen)
+    // Configurar timeout de respaldo por si el video no carga
     setTimeout(() => {
         if (!videoEnded) {
-            console.log("Timeout alcanzado, continuando...");
+            console.log("Timeout del video alcanzado, continuando...");
             handleVideoError();
         }
-    }, 18000);
+    }, 16000); // 16 segundos (14s del video + 2s de margen)
 }
 
 // Manejar error del video
@@ -202,46 +206,33 @@ function showMainContent() {
     const mainContent = document.getElementById('mainContent');
     if (mainContent) {
         mainContent.style.display = 'block';
-        // Forzar reflow
-        mainContent.offsetHeight;
         setTimeout(() => {
             mainContent.classList.add('visible');
         }, 100);
     }
     
-    // En mobile, reducir animaciones pesadas
-    if (!isMobile) {
-        createShootingStars();
-    }
+    // Crear estrellas fugaces
+    createShootingStars();
     
-    // Iniciar música navideña automáticamente (con fallback para autoplay policy)
+    // Iniciar música navideña automáticamente
     const music = document.getElementById('christmasMusic');
     if (music) {
-        music.volume = 0.5; // Volumen reducido
-        const playPromise = music.play();
-        
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                musicPlaying = true;
-                activateMusicVisualizer();
-                console.log("Música navideña reproduciéndose");
-            }).catch(e => {
-                console.log("No se pudo reproducir música automáticamente:", e.message);
-                // Permitir que el usuario inicie la música con un click
-                document.addEventListener('click', function playMusicOnUserInteraction() {
-                    if (!musicPlaying) {
-                        music.play().then(() => {
-                            musicPlaying = true;
-                            activateMusicVisualizer();
-                            console.log("Música iniciada por usuario");
-                        }).catch(err => {
-                            console.warn("No se pudo reproducir música:", err.message);
-                        });
-                        document.removeEventListener('click', playMusicOnUserInteraction);
-                    }
-                }, { once: true });
-            });
-        }
+        music.volume = 0.7; // Volumen moderado
+        music.play().then(() => {
+            musicPlaying = true;
+            activateMusicVisualizer();
+            console.log("Música navideña reproduciéndose");
+        }).catch(e => {
+            console.log("Error reproduciendo música navideña:", e);
+            // Intentar con interacción del usuario
+            document.addEventListener('click', function startMusicOnClick() {
+                music.play().then(() => {
+                    musicPlaying = true;
+                    activateMusicVisualizer();
+                    document.removeEventListener('click', startMusicOnClick);
+                });
+            }, { once: true });
+        });
     }
 }
 
